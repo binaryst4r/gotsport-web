@@ -1,4 +1,4 @@
-import { Organization } from "../App";
+import { Organization } from "../pages/Organization/index";
 
 export const OrgTable = ({ orgs }: { orgs: Organization[] }) => {
   return (

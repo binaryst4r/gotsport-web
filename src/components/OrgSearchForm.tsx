@@ -1,5 +1,5 @@
 import React from "react"
-import { Organization } from "../App"
+import { Organization } from "../pages/Organization/index"
 import { Toggler, TextInput, SelectInput } from "./forms/Elements"
 
 export const OrgSearchForm = ({setOrgs}: {setOrgs: React.Dispatch<React.SetStateAction<Array<Organization>>>}) => {
