@@ -12,9 +12,9 @@ import {
   XIcon,
 } from "@heroicons/react/outline";
 import { SearchIcon } from "@heroicons/react/solid";
-import logo from "./images/gotsport-lt.png";
-import { OrgSearchForm } from "../../components/OrgSearchForm";
-import { OrgTable } from "../../components/OrgTable";
+import logo from "images/gotsport-lt.png";
+import { OrgSearchForm } from "components/OrgSearchForm";
+import { OrgTable } from "components/OrgTable";
 
 export type Organization = {
   name: string;
@@ -51,7 +51,7 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function App() {
+export default function Organizations() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [orgs, setOrgs] = useState<Organization[]>([])
   return (

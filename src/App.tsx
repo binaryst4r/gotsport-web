@@ -1,21 +1,14 @@
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route
-} from "react-router-dom";
-import { Login } from "./pages/Auth";
+import { Routes, Route } from "react-router-dom";
+import { Login } from "pages/Auth";
+import Organizations from "pages/Organization";
+import { useAuth } from "providers/AuthContext";
 
 export const App = () => {
-  return (
-    <Router>
+  const { user } = useAuth();
+  if (user) {
+    return (
       <Routes>
-        <Route path="/" element={<Login />} />
-      </Routes>
-      {/* header and navigation here */}
-
-      {/* Sidebar */}
-
-      <Routes>
+        <Route element={<Organizations />} path="/" />
         <Route element={null} path="/dashboard" />
         <Route element={null} path="/account" />
         <Route element={null} path="/events" />
@@ -27,8 +20,15 @@ export const App = () => {
         <Route element={null} path="/referee" />
         <Route element={null} path="/family" />
       </Routes>
-    </Router>
-  )
-}
+    );
+  }
+  // NO user = Login route
+  return (
+    <Routes>
+      <Route path="/" element={<Login />} />
+      <Route path="/auth" element={<Login />} />
+    </Routes>
+  );
+};
 
 export default App;
