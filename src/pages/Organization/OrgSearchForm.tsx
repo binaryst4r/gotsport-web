@@ -1,13 +1,16 @@
 import React from "react"
-import { Organization } from "../pages/Organization/index"
-import { Toggler, TextInput, SelectInput } from "./forms/Elements"
-import { fetchCollection } from "../utils/api"
+import { Organization } from "./index"
+import { Toggler, TextInput, SelectInput } from "components/forms"
+import { RequestProps, makeApiRequest } from "utils/api"
 import { useQuery } from "@tanstack/react-query"
 
 export const OrgSearchForm = ({setOrgs}: {setOrgs: React.Dispatch<React.SetStateAction<Array<Organization>>>}) => {
   const [search, setSearch] = React.useState('')
   const [loading, setLoading] = React.useState(false)
-  const { refetch, isFetching } = useQuery(['orgs'], () => fetchCollection(`/organizations?search[name]=${search}`), {
+  const FetchOrganizationProps: RequestProps = {
+    path: `/organizations?search[name]=${search}`
+  }
+  const { refetch, isFetching } = useQuery(['orgs'], () => makeApiRequest(FetchOrganizationProps), {
     enabled: false,
     refetchOnWindowFocus: false
   })
@@ -49,6 +52,7 @@ export const OrgSearchForm = ({setOrgs}: {setOrgs: React.Dispatch<React.SetState
               value: 'Larry Gust',
               display: 'Larry Gust'
             }]}
+            initialValue={null}
             label="GotSport Representative"
             onSelect={(e) => console.log(e)}
           />
@@ -56,6 +60,7 @@ export const OrgSearchForm = ({setOrgs}: {setOrgs: React.Dispatch<React.SetState
 
         <div className="w-1/3 px-2">
           <SelectInput
+            initialValue={null}
             options={[{
               name: 'Larry Gust',
               value: 'Larry Gust',
@@ -79,6 +84,7 @@ export const OrgSearchForm = ({setOrgs}: {setOrgs: React.Dispatch<React.SetState
           />
 
           <SelectInput
+            initialValue={null}
             options={[{
               name: 'Larry Gust',
               value: 'Larry Gust',
@@ -111,6 +117,7 @@ export const OrgSearchForm = ({setOrgs}: {setOrgs: React.Dispatch<React.SetState
           />
 
           <SelectInput
+            initialValue={null}
             options={[{
               name: 'Larry Gust',
               value: 'Larry Gust',
