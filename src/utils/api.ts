@@ -1,20 +1,42 @@
-import axios, {AxiosRequestConfig} from "axios";
+import axios, {AxiosRequestConfig, AxiosResponseHeaders} from "axios";
+import { makeAuthHeader } from "./auth";
 
-export const fetchDetail = async (path: string, id: 'string', options: AxiosRequestConfig = {}) => {
-  const response = await axios({
-    method: 'get',
-    url: `${process.env.REACT_APP_API_URL}/${path}/${id}`,
-    ...options
-  })
-  return Promise.resolve(response.data)
+// replace with GotSport API headers
+const _defaultHeaders: AxiosResponseHeaders = {
+  Accept: "application/vnd.kott-api.v1.json",
+  "Content-Type": "application/json",
 };
 
-export const fetchCollection = async (path: string, options: AxiosRequestConfig = {}) => {
-  const response = await axios({
-    method: 'get',
-    url: `${process.env.REACT_APP_API_URL}/${path}`,
-    ...options
-  })
-
-  return Promise.resolve(response.data)
+export interface RequestProps {
+  method?: "GET" | "POST" | "PATCH" | "PUT";
+  path: string;
+  params?: any;
 }
+
+const baseUrl = process.env.REACT_APP_API_URL;
+
+export const makeApiRequest = async ({
+  method = "GET",
+  params,
+  path,
+}: RequestProps) => {
+  
+  let defaultHeaders = Object.assign({}, _defaultHeaders, makeAuthHeader());
+  let axiosParams = Object.assign({}, params);
+
+  let options: AxiosRequestConfig = {
+    method,
+    url: `${baseUrl}${path}`,
+    headers: defaultHeaders,
+    timeout: 30000,
+  };
+  if (method.toUpperCase() === "GET") {
+    options.params = axiosParams;
+  } else {
+    options.data = axiosParams;
+  }
+  const response = await axios(options);
+  
+  // return the entire response for sign in so we can access headers
+  return Promise.resolve(path.includes('/users/sign_up') ? response : response.data)
+};
