@@ -5,7 +5,7 @@ orbs:
 jobs:
   compile-and-test:
     docker:
-      - image: "cimg/node"
+      - image: cimg/node:18.9.1
     steps:
       - checkout
       - run: yarn install
