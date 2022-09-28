@@ -2,14 +2,12 @@ version: 2.1
 
 orbs:
   node: circleci/node@4.7
-  yarn: itinerisltd/yarn@2.1.1
 jobs:
   compile-and-test:
     docker:
-      - image: "cimg/base:stable"
+      - image: "cimg/node"
     steps:
       - checkout
-      - node/install
       - run: yarn install
       - run: yarn compile
       - run: yarn test
