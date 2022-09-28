@@ -8,11 +8,12 @@ orbs:
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
-workflows:
-  sample: # This is the name of the workflow, feel free to change it to better match your workflow.
-    # Inside the workflow, you define the jobs you want to run.
-    jobs:
-      compile-and-test:
-        steps:
-          - run: yarn compile
-          - run: yarn test
+jobs:
+  compile-and-test:
+    executor:
+      name: node/default
+    steps:
+      - checkout
+      - node/install-packages
+      - run: yarn compile
+      - run: yarn test
