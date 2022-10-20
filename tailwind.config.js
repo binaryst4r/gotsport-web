@@ -22,6 +22,7 @@ module.exports = {
       salmon: '#DB6B6B',
       gold: '#D5BA10',
       yellow: '#F5DC3D',
+      "blue-gray": '#D9E1E7',
       mono: {
         black: '#000000',
         white: '#ffffff',
@@ -35,12 +36,35 @@ module.exports = {
       },
       success: '#198623',
       warning: '#c25608',
-      error: '#ca364c',
+      error: '#C40000',
       info: '#177c8f',
+      badge: {
+        primary: {
+          text: '#ffffff',
+          bg: '#70AF5F'
+        },
+        secondary: {
+          text: '#5C89C7',
+          bg: '#BCD8FF'
+        },
+
+        gray: {
+          text: '#ffffff',
+          bg: '#8B8B8B'
+        },
+        muted: {
+          text: '#8B8B8B',
+          bg: '#E0E0E0'
+        },
+        danger: {
+          text: '#ffffff',
+          bg: '#C4000'
+        }
+      },
       alert: {
         danger: {
           border: '#fdd6d6',
-          background: '#fee2e1',
+          background: '#C40000',
           text: '#813838'
         },
         success: {
