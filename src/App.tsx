@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import { Login } from "pages/Auth";
 import Organizations from "pages/Organization";
 import { useAuth } from "providers/AuthContext";
-import { DesignPage } from "pages/Design";
+import { Design } from "pages/Design";
 
 export const App = () => {
   const { user } = useAuth();
@@ -27,7 +27,7 @@ export const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Login />} />
-      <Route path="/design" element={<DesignPage />} />
+      <Route path="/design/*" element={<Design />} />
       <Route path="/auth" element={<Login />} />
     </Routes>
   );
