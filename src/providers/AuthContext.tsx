@@ -1,14 +1,24 @@
 import * as React from "react";
-type User = {
-  slug: string;
-  first_name: string;
-  last_name: string;
+import {User} from 'types/User'
+import {useQuery} from '@tanstack/react-query'
+import {getUser, setUser, clearUser} from 'utils/user'
+import {RequestProps, makeApiRequest} from 'utils/api'
+
+type LoginProps = {
+  email: string;
+  password: string;
 };
+
+type RegisterProps = {
+  email: string;
+  password: string;
+};
+
 interface AuthContextType {
   user: User | null;
-  login: () => void;
+  login: ({ email, password }: LoginProps) => void;
   logout: () => void;
-  register: () => void;
+  register: ({ email, password}: RegisterProps) => void;
 }
 
 const AuthContext = React.createContext<AuthContextType>({
@@ -28,23 +38,99 @@ function AuthProvider(props: any) {
   // whether or not we have a user token and if we do, then we render a spinner
   // while we go retrieve that user's information.
 
-  // if (weAreStillWaitingToGetTheUserData) {
-  //   return <p>Loading...</p>
-  // }
+  const [currentUser, setCurrentUser] = React.useState(null);
+  const userCookie = getUser();
+  const { refetch, isFetching } = useQuery(
+    ["user"],
+    () => makeApiRequest({ path: `/users/${userCookie.id}` }),
+    {
+      enabled: false,
+      refetchOnWindowFocus: false,
+    }
+  );
 
-  const user: any = null;
-  const login = () => {
-    // insert react query here
-  }; // make a login request
-  const register = () => {}; // register the user
-  const logout = () => {}; // clear the token in localStorage and the user data
+  React.useEffect(() => {
+    if (userCookie && !currentUser) {
+      // make api request and set user value john
+      console.log(userCookie);
+      refetch().then((res) => {
+        setCurrentUser(res.data);
+      });
+    }
+  }, []);
 
-  // note, I'm not bothering to optimize this `value` with React.useMemo here
-  // because this is the top-most component rendered in our app and it will very
-  // rarely re-render/cause a performance problem.
+  if (isFetching) {
+    return <p>Loading...</p>;
+  }
+
+  const login = async ({ email, password }: LoginProps) => {
+    const SignInArgs: RequestProps = {
+      method: "POST",
+      params: {
+        email,
+        password,
+      },
+      path: "/users/login",
+    };
+
+    // make a login request
+    return makeApiRequest(SignInArgs)
+      .then((res) => {
+        // debugger;
+        const user = res.data.data;
+        const userData = {
+          id: user.slug,
+          authentication_token: res.headers["access-token"],
+          client: res.headers["client"],
+          expiry: res.headers["expiry"],
+          email: user.email,
+          first_name: user.first_name,
+          last_name: user.last_name,
+        };
+        setUser(userData);
+        setCurrentUser(user);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const register = async ({ email, password }: RegisterProps) => {
+    const RegisterArgs: RequestProps = {
+      method: "POST",
+      params: {
+        email,
+        password
+      },
+      path: "/users/sign_up",
+    };
+
+    // make a login request
+    return makeApiRequest(RegisterArgs)
+      .then((res) => {
+        // debugger;
+        const user = res.data.data;
+        console.log(res, user)
+        const userData = {
+          id: user.slug,
+          authentication_token: res.headers["access-token"],
+          client: res.headers["client"],
+          expiry: res.headers["expiry"],
+          email: user.email,
+          first_name: user.first_name,
+          last_name: user.last_name,
+        };
+        setUser(userData);
+        setCurrentUser(user);
+      })
+      .catch((err) => console.log(err));
+  }; // register the user
+  const logout = () => {
+    clearUser();
+    setCurrentUser(null);
+  }; // clear the token in localStorage and the user data
+
   return (
     <AuthContext.Provider
-      value={{ user, login, logout, register }}
+      value={{ user: currentUser, login, logout, register }}
       {...props}
     />
   );

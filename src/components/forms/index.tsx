@@ -8,7 +8,7 @@ function classNames(...classes: string[]) {
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   name: string;
-  label: string;
+  label?: string;
 }
 
 interface TextAreaProps
@@ -19,32 +19,44 @@ interface TextAreaProps
 
 export type InputOption = {
   name: string;
-  value: string | number;
+  value: string | number | null;
   display: string;
 };
 
 export const SelectInput = ({
   options,
   onSelect,
-  label
+  label,
+  initialValue
 }: {
   options: InputOption[];
   onSelect: (selected?: InputOption) => void;
   label?: string
+  initialValue: InputOption | null
 }) => {
-  const [selected, setSelected] = React.useState<InputOption>(options[0]);
+  const [currentSelection, setCurrentSelection] = React.useState<InputOption>(initialValue || {
+    name: "",
+    display: "Select...",
+    value: null
+  });
   useEffect(() => {
-    if (selected) {
-      onSelect(selected)
+    if (currentSelection && currentSelection.value) {
+      onSelect(currentSelection)
     }
-  }, [selected])
-
-  // when options are loaded, select the first option
+  }, [currentSelection])
+  const optionsWithNull: InputOption[] = [
+    {
+      name: "",
+      display: "Select...",
+      value: null
+    },
+    ...options
+  ]
 
   return (
     <div className="my-6">
 
-      <Listbox value={selected} onChange={setSelected}>
+      <Listbox value={currentSelection} onChange={setCurrentSelection}>
         {({ open }) => (
           <>
           {label ? (
@@ -53,8 +65,8 @@ export const SelectInput = ({
             </Listbox.Label>
           ) : null}
             <div className="mt-1 relative">
-              <Listbox.Button className="bg-white relative w-full border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-lime-500 focus:border-lime-500 sm:text-sm">
-                <span className="block truncate">{selected?.display}</span>
+              <Listbox.Button className="bg-mono-white relative w-full border border-mono-500 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-lime-500 focus:border-lime-500 sm:text-lg">
+                <span className="block truncate">{currentSelection?.display}</span>
                 <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
                   <SelectorIcon
                     className="h-5 w-5 text-gray-400"
@@ -70,8 +82,8 @@ export const SelectInput = ({
                 leaveFrom="opacity-100"
                 leaveTo="opacity-0"
               >
-                <Listbox.Options className="absolute z-10 mt-1 w-full bg-white shadow-lg max-h-60 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm">
-                  {options.map((option) => (
+                <Listbox.Options className="absolute z-10 mt-1 w-full bg-mono-white shadow-lg max-h-60 rounded-md py-1 text-lg ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-lg">
+                  {optionsWithNull.map((option) => (
                     <Listbox.Option
                       key={option.name}
                       className={({ active }) =>
@@ -160,7 +172,7 @@ export const Toggler = ({
           aria-hidden="true"
           className={classNames(
             enabled ? "translate-x-5" : "translate-x-0",
-            "pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200"
+            "pointer-events-none inline-block h-5 w-5 rounded-full bg-mono-white shadow transform ring-0 transition ease-in-out duration-200"
           )}
         />
       </Switch>
@@ -177,7 +189,7 @@ export const TextArea = ({ name, label, ...rest }: TextAreaProps) => {
       <div className="mt-1">
         <textarea
           id={name}
-          className="shadow-sm focus:ring-lime-500 focus:border-lime-500 block w-full sm:text-sm border-gray-300 rounded-md"
+          className="shadow-sm focus:ring-lime-500 focus:border-lime-500 block w-full sm:text-sm border-mono-500 rounded-md"
           {...rest}
         />
       </div>
@@ -188,18 +200,14 @@ export const TextArea = ({ name, label, ...rest }: TextAreaProps) => {
 export const TextInput = ({ name, label, ...rest }: Props) => {
   return (
     <div className="my-6">
-      {label ? (
-        <label
-          htmlFor={name}
-          className="block text-sm font-medium text-gray-700"
-        >
+      <div>
+        <label htmlFor="email" className={!label ? "sr-only" : ""}>
           {label}
         </label>
-      ) : null}
-      <div className="mt-1">
         <input
+          name={name}
           id={name}
-          className="shadow-sm focus:ring-lime-500 focus:border-lime-500 block w-full sm:text-sm border-gray-300 rounded-md"
+          className="py-3 block w-full rounded-md border-mono-500 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
           {...rest}
         />
       </div>

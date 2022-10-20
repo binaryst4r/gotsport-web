@@ -1,4 +1,4 @@
-import { Organization } from "../pages/Organization/index";
+import { Organization } from "./index";
 
 export const OrgTable = ({ orgs }: { orgs: Organization[] }) => {
   return (
@@ -55,7 +55,7 @@ export const OrgTable = ({ orgs }: { orgs: Organization[] }) => {
                 </th> */}
               </tr>
             </thead>
-            <tbody className="bg-white">
+            <tbody className="bg-mono-white">
               {orgs.map((org, personIdx) => (
                 <tr
                   key={org.name}

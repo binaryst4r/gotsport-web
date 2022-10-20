@@ -1,10 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import AppProviders from './providers/AppProviders';
+import 'index.css';
+import App from 'App';
+import reportWebVitals from 'reportWebVitals';
+import AppProviders from 'providers/AppProviders';
 import { BrowserRouter as Router } from 'react-router-dom';
+import Appsignal from "@appsignal/javascript";
+import { ErrorBoundary } from "@appsignal/react";
+import { Button } from 'components/buttons';
+ 
+
+
+const appsignal = new Appsignal({
+  key: "YOUR FRONTEND API KEY"
+});
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -12,11 +21,15 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <AppProviders>
-      <Router>
-        <App />
-      </Router>
-    </AppProviders>
+    <ErrorBoundary
+      instance={appsignal}
+    >
+      <AppProviders>
+        <Router>
+          <App />
+        </Router>
+      </AppProviders>
+    </ErrorBoundary>
   </React.StrictMode>
 );
 
