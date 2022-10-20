@@ -34,7 +34,7 @@ export const Design = () => {
 
   return (
     <div className="flex">
-      <div className="flex min-h-screen flex-col bg-mono-700 w-1/3">
+      <div className="flex min-h-screen flex-col bg-mono-700 w-1/4">
         <div className="flex flex-1 flex-col overflow-y-auto pt-5 pb-4">
           <div className="flex flex-shrink-0 items-center px-4">
             <img
@@ -98,8 +98,14 @@ export const Design = () => {
           </nav>
         </div>
       </div>
-        <div className="w-2/3 p-6">
+        <div className="w-3/4 p-6">
           <Routes>
+            <Route path='/' element={
+              <>
+                <Heading size={2}>GotSport Design system</Heading>
+                <Body>Use navigation on the left to view specific elements.</Body>
+              </>
+            } />
             <Route path="typography" element={<Typography />} />
             <Route path="buttons" element={<Buttons />} />
             <Route path="badges" element={<Badges />} />
