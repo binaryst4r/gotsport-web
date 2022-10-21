@@ -23,6 +23,7 @@ module.exports = {
       gold: '#D5BA10',
       yellow: '#F5DC3D',
       "blue-gray": '#D9E1E7',
+      "dark-blue-gray": '#99B2C6',
       mono: {
         black: '#000000',
         white: '#ffffff',

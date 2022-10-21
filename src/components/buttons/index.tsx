@@ -3,7 +3,7 @@ import cn from 'classnames'
 
 const ButtonVariantStyles = {
   white: 'inline-flex items-center rounded border border-mono-400 bg-mono-white px-10 py-3 text-mono-700 shadow-sm hover:bg-mono-100 focus:outline-none focus:ring-2 focus:ring-light-blue focus:ring-offset-2',
-  gray: 'inline-flex items-center rounded border border-mono-400 bg-blue-gray px-10 py-3 text-mono-700 shadow-sm hover:bg-mono-100 focus:outline-none focus:ring-2 focus:ring-light-blue focus:ring-offset-2',
+  gray: 'inline-flex items-center rounded border border-dark-blue-gray bg-blue-gray px-10 py-3 text-mono-700 shadow-sm hover:bg-dark-blue-gray focus:outline-none focus:ring-2 focus:ring-light-blue focus:ring-offset-2',
   blueOutline: 'inline-flex items-center rounded border border-light-blue bg-transparent px-10 py-3 text-light-blue shadow-sm hover:bg-mono-100 focus:outline-none focus:ring-2 focus:ring-light-blue focus:ring-offset-2',
   pillPrimary: 'inline-flex items-center px-10 py-3 border border-transparent text-base text-mono-white rounded-full shadow-sm text-white bg-light-blue hover:bg-dark-blue focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-light-blue',
   pillSecondary: 'inline-flex items-center px-10 py-3 border border-light-blue text-base rounded-full shadow-sm text-light-blue bg-transparent hover:bg-mono-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-light-blue',
