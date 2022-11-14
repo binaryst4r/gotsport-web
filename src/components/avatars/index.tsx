@@ -2,21 +2,18 @@ import cn from 'classnames'
 import { HTMLAttributes, ImgHTMLAttributes } from 'react'
 
 type Props = {
-  size: number
-  src: string
-} & HTMLAttributes<HTMLImageElement>
+  className?: string
+  size?: number
+} & ImgHTMLAttributes<HTMLImageElement>
 const baseStyle = 'inline-block rounded-full'
 
-export const Avatar = ({size = 6, src, ...rest}: Props) => {
+export const Avatar = ({size = 6, className, ...rest}: Props) => {
   const styles = cn(
     baseStyle,
-    `h-${size} w-${size}`
+    `h-${size}`,
+    className
   )
   return (
-    <img
-      className={styles}
-      src={src}
-      {...rest}
-    />
+    <img className={styles} {...rest} />
   )
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import ReactModal from "react-modal"
-import {XCircleIcon} from '@heroicons/react/solid'
+import {XCircleIcon} from '@heroicons/react/24/solid'
 
 type Props = {
   children: React.ReactNode

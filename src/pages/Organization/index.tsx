@@ -7,11 +7,9 @@ import {
   FolderIcon,
   HomeIcon,
   InboxIcon,
-  MenuAlt2Icon,
   UsersIcon,
-  XIcon,
-} from "@heroicons/react/outline";
-import { SearchIcon } from "@heroicons/react/solid";
+  XMarkIcon
+} from "@heroicons/react/24/outline";
 import logo from "images/gotsport-lt.png";
 import { OrgSearchForm } from "pages/Organization/OrgSearchForm";
 import { OrgTable } from "pages/Organization/OrgTable";
@@ -110,7 +108,7 @@ export default function Organizations() {
                         onClick={() => setSidebarOpen(false)}
                       >
                         <span className="sr-only">Close sidebar</span>
-                        <XIcon
+                        <XMarkIcon
                           className="h-6 w-6 text-white"
                           aria-hidden="true"
                         />

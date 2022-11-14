@@ -12,7 +12,7 @@ import {
   Toggler,
   InputOption,
 } from "components/forms";
-import { ShareIcon } from "@heroicons/react/solid";
+import { ShareIcon } from "@heroicons/react/24/solid";
 import { Modal } from "components/layout";
 import { Badge } from "components/badges";
 

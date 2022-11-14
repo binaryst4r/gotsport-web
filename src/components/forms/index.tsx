@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect } from "react";
 import { Switch, Listbox, Transition } from "@headlessui/react";
-import { CheckIcon, SelectorIcon } from "@heroicons/react/solid";
+import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/24/solid";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -68,7 +68,7 @@ export const SelectInput = ({
               <Listbox.Button className="bg-mono-white relative w-full border border-mono-500 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-lime-500 focus:border-lime-500 sm:text-lg">
                 <span className="block truncate">{currentSelection?.display}</span>
                 <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-                  <SelectorIcon
+                  <ChevronUpDownIcon
                     className="h-5 w-5 text-gray-400"
                     aria-hidden="true"
                   />
