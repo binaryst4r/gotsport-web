@@ -19,7 +19,7 @@ const disableStyles =
 type Props = {
   variant?: keyof typeof ButtonVariantStyles
   loading?: boolean
-  children: React.ReactNode
+  children?: React.ReactNode
   trailingIcon?:  React.ElementType<any>
   leadingIcon?: React.ElementType<any>
 } & React.ButtonHTMLAttributes<HTMLButtonElement>

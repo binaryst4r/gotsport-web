@@ -4,11 +4,11 @@ import cn from 'classnames'
 type ValidElements = 'h1' | 'h2' | 'h3' | 'h4' | 'h5'
 
 const sizes = {
-  1: `text-mono-black text-2xl leading-8`,
-  2: `text-mono-black text-xl leading-8`,
-  3: `text-mono-black text-base leading-6`,
-  4: `text-mono-black text-sm leading-6`,
-  5: `text-mono-black text-xs leading-4`
+  1: `text-2xl leading-8`,
+  2: `text-xl leading-8`,
+  3: `text-base leading-6`,
+  4: `text-sm leading-6`,
+  5: `text-xs leading-4`
 }
 
 const baseStyles = `font-bold font-proxima`
