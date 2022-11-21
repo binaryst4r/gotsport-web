@@ -4,6 +4,7 @@ import { Bars3Icon, BellIcon, XMarkIcon, InboxIcon } from '@heroicons/react/24/o
 import { Avatar } from 'components/avatars'
 import { MessageDropdown } from './MessageDropdown'
 import { NotificationDropdown } from './NotificationDropdown'
+import logo from "../../images/gotsport-lt.png";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
@@ -20,42 +21,16 @@ export const Navbar = () => {
                 <div className="flex-shrink-0">
 
                   <Avatar
-                    className="block lg:hidden border-green border-2 w-[3rem] h-[3rem]"
+                    className="block sm:hidden border-green border-2 w-[3rem] h-[3rem]"
                     src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
                     alt="Your Company"
                   />
 
                   <Avatar
-                    className="hidden h-8 w-auto lg:block"
-                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                    alt="Your Company"
+                    className="hidden h-8 w-auto sm:block"
+                    src={logo}
+                    alt="GotSport"
                   />
-                </div>
-                <div className="hidden sm:ml-6 sm:block">
-                  <div className="flex space-x-4">
-                    {/* Current: "bg-gray-900 text-white", Default: "text-mono-white hover:bg-gray-700 hover:text-white" */}
-                    <a href="#" className="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white">
-                      Dashboard
-                    </a>
-                    <a
-                      href="#"
-                      className="rounded-md px-3 py-2 text-sm font-medium text-mono-white hover:bg-gray-700 hover:text-white"
-                    >
-                      Team
-                    </a>
-                    <a
-                      href="#"
-                      className="rounded-md px-3 py-2 text-sm font-medium text-mono-white hover:bg-gray-700 hover:text-white"
-                    >
-                      Projects
-                    </a>
-                    <a
-                      href="#"
-                      className="rounded-md px-3 py-2 text-sm font-medium text-mono-white hover:bg-gray-700 hover:text-white"
-                    >
-                      Calendar
-                    </a>
-                  </div>
                 </div>
               </div>
               <div className="hidden sm:ml-6 sm:block">
