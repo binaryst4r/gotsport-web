@@ -1,6 +1,5 @@
 import { Routes, Route } from "react-router-dom";
 import { Login } from "pages/Auth";
-import Organizations from "pages/Organization";
 import { useAuth } from "providers/AuthContext";
 import { Design } from "pages/Design";
 import { Navbar } from "components/nav/Navbar";
@@ -14,7 +13,6 @@ export const App = () => {
       <>
         <Navbar />
         <Routes>
-          <Route element={<Organizations />} path="/" />
           <Route element={<AccountSelect />} path="/account-select" />
           <Route element={null} path="/dashboard" />
           <Route element={null} path="/account" />
