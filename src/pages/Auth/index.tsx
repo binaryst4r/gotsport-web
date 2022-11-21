@@ -1,4 +1,4 @@
-import { LockClosedIcon } from '@heroicons/react/solid'
+import { LockClosedIcon } from '@heroicons/react/24/solid'
 import logo from "../../images/gotsport-lt.png";
 export const Login = () => {
   return (

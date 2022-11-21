@@ -1,6 +1,6 @@
 import React from "react";
 import ReactModal from "react-modal"
-import {XCircleIcon} from '@heroicons/react/solid'
+import {XCircleIcon} from '@heroicons/react/24/solid'
 
 type Props = {
   children: React.ReactNode
@@ -15,8 +15,10 @@ type ModalProps = {
 
 export const Container = ({children, ...rest}: Props) => {
   return (
-    <div className="mx-auto max-w-7xl sm:px-6 lg:px-8" {...rest}>
-      {children}
+    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-full" {...rest}>
+      <div className="mx-auto max-w-full h-full">
+        {children}
+      </div>
     </div>
   )
 }
