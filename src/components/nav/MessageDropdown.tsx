@@ -58,8 +58,8 @@ export const MessageDropdown = () => {
             <span>Messages</span>
           </div>
           {/* iterate over notifications */}
-          {messages.map(message => (
-            <Menu.Item>
+          {messages.map((message, i) => (
+            <Menu.Item key={i}>
               {({ active }) => (
                 <a
                   href="#"

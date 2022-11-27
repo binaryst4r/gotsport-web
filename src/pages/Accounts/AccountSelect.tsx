@@ -1,5 +1,14 @@
 import React from "react";
-import { UsersIcon, CogIcon, EyeIcon, EyeSlashIcon, ArrowRightOnRectangleIcon, BellIcon, InboxIcon, DocumentTextIcon } from "@heroicons/react/24/outline";
+import {
+  UsersIcon,
+  CogIcon,
+  EyeIcon,
+  EyeSlashIcon,
+  ArrowRightOnRectangleIcon,
+  BellIcon,
+  InboxIcon,
+  DocumentTextIcon,
+} from "@heroicons/react/24/outline";
 import { DashboardNav } from "components/nav/DashboardNav";
 import { Heading } from "components/typography/Heading";
 import { Toggler } from "components/forms";
@@ -12,10 +21,11 @@ import { DesktopAccountSelectTable } from "./DesktopAccountSelectTable";
 export const AccountSelect = () => {
   // const {user} = useAuth()
   const user = {
+    id: 42669,
     first_name: "Jamie",
     last_name: "Williams",
-    email: "jamiewilliams@mail.com"
-  }
+    email: "jamiewilliams@mail.com",
+  };
   return (
     <div className="min-h-screen w-full bg-dark-blue pb-20">
       <DashboardHeader user={user} />
@@ -23,8 +33,12 @@ export const AccountSelect = () => {
       <Container>
         <div className="flex text-mono-white justify-between px-12 py-6 sm:py-16">
           <CogIcon className="h-6 sm:invisible" />
-          <Heading className="sm:text-[2rem]" size={3}>Select Account</Heading>
-          <Toggler label="" />
+          <Heading className="sm:text-[2rem]" size={3}>
+            Select Account
+          </Heading>
+          <div className="invisible">
+            <Toggler label="" />
+          </div>
         </div>
       </Container>
 
@@ -39,5 +53,3 @@ export const AccountSelect = () => {
     </div>
   );
 };
-
-

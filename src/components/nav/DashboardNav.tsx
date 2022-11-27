@@ -1,5 +1,5 @@
 import { UsersIcon } from "@heroicons/react/24/solid"
-import { Container } from "components/layout"
+
 import React from "react"
 
 export const NavItem = ({active, children}: {
@@ -19,7 +19,7 @@ export const DashboardNav = () => {
   const billingTabActive = activeTab === 'billing'
   return (
     <div className="h-[4.5rem] bg-mono-200 border-1 border-t border-mono-300">
-      <Container>
+      <div className="mx-auto max-w-7xl px-0 sm:px-6 lg:px-8 h-full">
         <div className="flex justify-between sm:justify-start items-center h-full">
           <NavItem active={accountsTabActive}>
             {accountsTabActive &&
@@ -32,7 +32,7 @@ export const DashboardNav = () => {
             <span>Billing</span>
           </NavItem>
         </div>
-      </Container>
+      </div>
     </div>
   )
 }

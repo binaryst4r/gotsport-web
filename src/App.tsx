@@ -6,13 +6,14 @@ import { Navbar } from "components/nav/Navbar";
 import { AccountSelect } from "pages/Accounts/AccountSelect";
 
 export const App = () => {
-  // const { user } = useAuth();
-  const user = {}
+  const { user } = useAuth();
+  console.log(user)
   if (user) {
     return (
       <>
         <Navbar />
         <Routes>
+          <Route element={<AccountSelect />} path="/" />
           <Route element={<AccountSelect />} path="/account-select" />
           <Route element={null} path="/dashboard" />
           <Route element={null} path="/account" />

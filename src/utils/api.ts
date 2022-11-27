@@ -3,8 +3,8 @@ import { makeAuthHeader } from "./auth";
 
 // replace with GotSport API headers
 const _defaultHeaders: AxiosResponseHeaders = {
-  Accept: "application/vnd.kott-api.v1.json",
   "Content-Type": "application/json",
+  Accept: 'application/json'
 };
 
 export interface RequestProps {
@@ -38,5 +38,5 @@ export const makeApiRequest = async ({
   const response = await axios(options);
   
   // return the entire response for sign in so we can access headers
-  return Promise.resolve(path.includes('/users/sign_up') ? response : response.data)
+  return Promise.resolve(response)
 };

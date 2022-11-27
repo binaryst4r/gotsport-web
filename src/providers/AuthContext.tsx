@@ -42,7 +42,7 @@ function AuthProvider(props: any) {
   const userCookie = getUser();
   const { refetch, isFetching } = useQuery(
     ["user"],
-    () => makeApiRequest({ path: `/users/${userCookie.id}` }),
+    () => makeApiRequest({ path: `/profile` }),
     {
       enabled: false,
       refetchOnWindowFocus: false,
@@ -54,7 +54,7 @@ function AuthProvider(props: any) {
       // make api request and set user value john
       console.log(userCookie);
       refetch().then((res) => {
-        setCurrentUser(res.data);
+        setCurrentUser(res.data?.data);
       });
     }
   }, []);
@@ -64,28 +64,29 @@ function AuthProvider(props: any) {
   }
 
   const login = async ({ email, password }: LoginProps) => {
+    console.log(`loggin in user with ${email}`)
     const SignInArgs: RequestProps = {
       method: "POST",
       params: {
-        email,
-        password,
+        user: {
+          email,
+          password,
+        }
       },
-      path: "/users/login",
+      path: "/login",
     };
 
     // make a login request
     return makeApiRequest(SignInArgs)
       .then((res) => {
-        // debugger;
-        const user = res.data.data;
+        const user = res.data.user
+        const token = res.data.jwt
         const userData = {
-          id: user.slug,
-          authentication_token: res.headers["access-token"],
-          client: res.headers["client"],
-          expiry: res.headers["expiry"],
+          id: user.id,
           email: user.email,
           first_name: user.first_name,
           last_name: user.last_name,
+          jwt: token
         };
         setUser(userData);
         setCurrentUser(user);
@@ -103,10 +104,9 @@ function AuthProvider(props: any) {
       path: "/users/sign_up",
     };
 
-    // make a login request
+    // make a sign up request
     return makeApiRequest(RegisterArgs)
       .then((res) => {
-        // debugger;
         const user = res.data.data;
         console.log(res, user)
         const userData = {

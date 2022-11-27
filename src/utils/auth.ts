@@ -6,10 +6,7 @@ export const makeAuthHeader = () => {
   
 	if (user) {
 	  return {
-			'uid': user.email,
-	  	'access-token': user.authentication_token,
-      'expiry': user.expiry,
-      'client': user.client
+			Authorization: `Bearer ${user.jwt}`
 	  }
 	}
   return {};

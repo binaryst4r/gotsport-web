@@ -207,7 +207,7 @@ export const TextInput = ({ name, label, ...rest }: Props) => {
         <input
           name={name}
           id={name}
-          className="py-3 block w-full rounded-md border-mono-500 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+          className="py-3 block w-full rounded-md border-mono-500 shadow-sm sm:text-sm"
           {...rest}
         />
       </div>

@@ -61,8 +61,8 @@ export const NotificationDropdown = () => {
             <span>Notifications</span>
           </div>
           {/* iterate over notifications */}
-          {notifications.map(notification => (
-            <Menu.Item>
+          {notifications.map((notification, i) => (
+            <Menu.Item key={i}>
               {({ active }) => (
                 <a
                   href="#"
