@@ -3,6 +3,7 @@ import {User} from 'types/User'
 import {useQuery} from '@tanstack/react-query'
 import {getUser, setUser, clearUser} from 'utils/user'
 import {RequestProps, makeApiRequest} from 'utils/api'
+import {Spinner} from 'components/loaders/Spinner'
 
 type LoginProps = {
   email: string;
@@ -58,6 +59,14 @@ function AuthProvider(props: any) {
       });
     }
   }, []);
+
+  if (isFetching) {
+    return (
+      <div className="w-screen h-screen flex justify-center items-center">
+        <Spinner className="w-24 h-24" />
+      </div>
+    )
+  }
 
   const login = async ({ email, password }: LoginProps) => {
     console.log(`loggin in user with ${email}`)
@@ -126,7 +135,7 @@ function AuthProvider(props: any) {
 
   return (
     <AuthContext.Provider
-      value={{ user: currentUser, login, logout, register, isFetching }}
+      value={{ user: currentUser, login, logout, register }}
       {...props}
     />
   );
