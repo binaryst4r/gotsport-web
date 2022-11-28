@@ -7,9 +7,6 @@ import AppProviders from 'providers/AppProviders';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Appsignal from "@appsignal/javascript";
 import { ErrorBoundary } from "@appsignal/react";
-import { Button } from 'components/buttons';
- 
-
 
 const appsignal = new Appsignal({
   key: "YOUR FRONTEND API KEY"

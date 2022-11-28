@@ -17,9 +17,12 @@ import { MobileAccountSelectTable } from "./MobileAccountSelectTable";
 import { DashboardHeader } from "./DashboardHeader";
 import { useAuth } from "providers/AuthContext";
 import { DesktopAccountSelectTable } from "./DesktopAccountSelectTable";
+import AlertBanner from "components/alerts/AlertBanner";
+import { useAlertBanner } from "providers/alerts/AlertBannerProvider";
 
 export const AccountSelect = () => {
   // const {user} = useAuth()
+  const { dispatch } = useAlertBanner();
   const user = {
     id: 42669,
     first_name: "Jamie",
@@ -28,12 +31,17 @@ export const AccountSelect = () => {
   };
   return (
     <div className="min-h-screen w-full bg-dark-blue pb-20">
+      <div className="absolute w-full top-16">
+        <AlertBanner />
+      </div>
       <DashboardHeader user={user} />
       <DashboardNav />
       <Container>
         <div className="flex text-mono-white justify-between px-12 py-6 sm:py-16">
-          <CogIcon className="h-6 sm:invisible" />
-          <Heading className="sm:text-[2rem]" size={3}>
+          <CogIcon
+            className="h-6 sm:invisible"
+          />
+          <Heading onClick={() => dispatch({ type: "open", payload: {message: 'Yes!', level: 'warning'} })} className="sm:text-[2rem]" size={3}>
             Select Account
           </Heading>
           <div className="invisible">

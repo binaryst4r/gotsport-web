@@ -8,13 +8,18 @@ import {
   QueryClientProvider,
 } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { AlertBannerProvider } from "./alerts/AlertBannerProvider";
 
 const queryClient = new QueryClient();
 
 function AppProviders({ children }: { children: React.ReactNode }) {
   return (
     <QueryClientProvider client={queryClient}>
-      <AuthProvider>{children}</AuthProvider>
+      <AuthProvider>
+        <AlertBannerProvider>
+          {children}
+        </AlertBannerProvider>
+      </AuthProvider>
       <ReactQueryDevtools />
     </QueryClientProvider>
   );

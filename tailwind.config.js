@@ -64,15 +64,21 @@ module.exports = {
       },
       alert: {
         danger: {
-          border: '#fdd6d6',
-          background: '#C40000',
-          text: '#813838'
+          background: '#FEF2F2',
+          text: '#991B1B'
         },
         success: {
           background: '#dbf2e3',
-          border: 'none',
-          text: '#ffffff'
-        }
+          text: '#70AF5F'
+        },
+        warning: {
+          background: '#FEFCE8',
+          text: '#A4670F'
+        },
+        info: {
+          background: '#EFF6FF',
+          text: '#1D4ED8'
+        },
       }
     }
   },
