@@ -1,9 +1,6 @@
 import * as React from "react";
 import { AuthProvider } from "./AuthContext";
 import {
-  useQuery,
-  useMutation,
-  useQueryClient,
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query";

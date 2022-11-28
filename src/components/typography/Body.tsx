@@ -10,6 +10,7 @@ const variants = {
 type Props = {
   variant?: keyof typeof variants
   bold?: boolean
+  className: string
 } & React.HTMLProps<HTMLParagraphElement>
 
 export function Body({

@@ -60,8 +60,8 @@ export const MobileAccountSelectTable = () => {
                   </Badge>
                 </Disclosure.Button>
                 <Disclosure.Panel className="px-4 pt-4 pb-2 text-sm">
-                  {guardianAccounts.map(account => (
-                    <MobileAccountListItem account={account} />
+                  {guardianAccounts.map((account, i) => (
+                    <MobileAccountListItem key={`guardian-${i}`} account={account} />
                   ))}
                 </Disclosure.Panel>
               </>
@@ -78,8 +78,8 @@ export const MobileAccountSelectTable = () => {
                   </Badge>
                 </Disclosure.Button>
                 <Disclosure.Panel className="px-4 pt-4 pb-2 text-sm text-gray-500">
-                  {primaryAccounts.map(account => (
-                    <MobileAccountListItem primary={true} account={account} />
+                  {primaryAccounts.map((account, i) => (
+                    <MobileAccountListItem key={`primary-${i}`} primary={true} account={account} />
                   ))}
                 </Disclosure.Panel>
               </>
@@ -96,8 +96,8 @@ export const MobileAccountSelectTable = () => {
                   </Badge>
                 </Disclosure.Button>
                 <Disclosure.Panel className="px-4 pt-4 pb-2 text-sm text-gray-500">
-                  {childAccounts.map(account => (
-                    <MobileAccountListItem account={account} />
+                  {childAccounts.map((account, i) => (
+                    <MobileAccountListItem key={`child-${i}`} account={account} />
                   ))}
                 </Disclosure.Panel>
               </>

@@ -2,12 +2,12 @@ import {Cookies} from 'react-cookie'
 const cookies = new Cookies()
 
 export const makeAuthHeader = () => {
-	let user = cookies.get(process.env.REACT_APP_USER_COOKIE || '');
+	const user = cookies.get(process.env.REACT_APP_USER_COOKIE || '');
   
 	if (user) {
-	  return {
+    return {
 			Authorization: `Bearer ${user.jwt}`
-	  }
+    }
 	}
   return {};
 };

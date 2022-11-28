@@ -16,6 +16,7 @@ const baseStyles = `font-bold font-proxima`
 type Props = {
   size?: keyof typeof sizes
   as?: ValidElements
+  className: string
 } & React.HTMLProps<HTMLHeadingElement>
 
 /**

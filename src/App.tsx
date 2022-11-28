@@ -7,7 +7,7 @@ import { AccountSelect } from "pages/Accounts/AccountSelect";
 
 export const App = () => {
   const { user } = useAuth();
-  console.log(user)
+
   if (user) {
     return (
       <>

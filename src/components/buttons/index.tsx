@@ -24,6 +24,7 @@ type Props = {
   leadingIcon?: React.ElementType<any>
 } & React.ButtonHTMLAttributes<HTMLButtonElement>
 
+// eslint-disable-next-line react/display-name
 export const Button = React.forwardRef<HTMLButtonElement, Props>(
   (props, ref) => {
     const {

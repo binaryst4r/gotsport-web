@@ -92,7 +92,7 @@ export const DesktopAccountListItem = ({
   primary?: boolean;
   disabled?: boolean;
 }) => {
-  let accountType: string = "Child";
+  let accountType = "Child";
   if (primary) {
     accountType = "Primary";
   } else if (disabled) {

@@ -100,19 +100,19 @@ export const DesktopAccountSelectTable = () => {
                 </Badge>
               </Disclosure.Button>
               <Disclosure.Panel className="px-4 pt-4 pb-2 text-sm">
-                {guardianAccounts.map(account => (
-                  <DesktopAccountListItem disabled={true} account={account} />
+                {guardianAccounts.map((account, i) => (
+                  <DesktopAccountListItem key={`guardian-${i}`} disabled={true} account={account} />
                 ))}
               </Disclosure.Panel>
             </>
           )}
         </Disclosure>
-        {primaryAccounts.map(account => (
-          <DesktopAccountListItem primary={true} account={account} />
+        {primaryAccounts.map((account, i) => (
+          <DesktopAccountListItem key={`primary-${i}`} primary={true} account={account} />
         ))}
 
-        {childAccounts.map(account => (
-          <DesktopAccountListItem account={account} />
+        {childAccounts.map((account, i) => (
+          <DesktopAccountListItem key={`child-${i}`} account={account} />
         ))}
       </div>
     </div>

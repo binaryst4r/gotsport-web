@@ -21,10 +21,10 @@ export const makeApiRequest = async ({
   path,
 }: RequestProps) => {
   
-  let defaultHeaders = Object.assign({}, _defaultHeaders, makeAuthHeader());
-  let axiosParams = Object.assign({}, params);
+  const defaultHeaders = Object.assign({}, _defaultHeaders, makeAuthHeader());
+  const axiosParams = Object.assign({}, params);
 
-  let options: AxiosRequestConfig = {
+  const options: AxiosRequestConfig = {
     method,
     url: `${baseUrl}${path}`,
     headers: defaultHeaders,

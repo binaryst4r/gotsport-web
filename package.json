@@ -21,8 +21,10 @@
     "autoprefixer": "^10.4.7",
     "axios": "^0.27.2",
     "classnames": "^2.3.2",
+    "eslint": "^8.28.0",
     "formik": "^2.2.9",
     "postcss": "^8.4.14",
+    "prettier": "^2.8.0",
     "react": "^18.2.0",
     "react-cookie": "^4.1.1",
     "react-dom": "^18.2.0",
@@ -40,14 +42,10 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "compile": "tsc",
-    "compile:watch": "tsc --watch"
+    "compile:watch": "tsc --watch",
+    "lint": "eslint ."
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
+  
   "browserslist": {
     "production": [
       ">0.2%",
@@ -59,5 +57,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.44.0",
+    "@typescript-eslint/parser": "^5.44.0",
+    "eslint-plugin-react": "^7.31.11"
   }
 }

@@ -1,13 +1,5 @@
-import React from "react";
 import {
-  UsersIcon,
   CogIcon,
-  EyeIcon,
-  EyeSlashIcon,
-  ArrowRightOnRectangleIcon,
-  BellIcon,
-  InboxIcon,
-  DocumentTextIcon,
 } from "@heroicons/react/24/outline";
 import { DashboardNav } from "components/nav/DashboardNav";
 import { Heading } from "components/typography/Heading";

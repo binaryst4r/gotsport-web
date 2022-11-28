@@ -3,10 +3,10 @@ import { Menu, Transition } from "@headlessui/react";
 import { BellIcon } from '@heroicons/react/24/outline'
 
 type Notification = {
-  sender: String
-  text: String
-  timestamp: String
-  read: Boolean
+  sender: string
+  text: string
+  timestamp: string
+  read: boolean
 };
 
 function classNames(...classes: string[]) {
