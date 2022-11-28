@@ -9,7 +9,6 @@ const variants = {
 
 type Props = {
   variant?: keyof typeof variants
-  className: string
 } & React.HTMLProps<HTMLLabelElement>
 
 export const Label = ({ variant = 'md', className, ...rest }: Props) => (

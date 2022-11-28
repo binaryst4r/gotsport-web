@@ -18,7 +18,6 @@ type Props = {
   variant?: keyof typeof BadgeVariantStyles
   children: React.ReactNode
   size?: 'sm' | 'md'
-  className: string
 } & React.HTMLAttributes<HTMLDivElement>
 
 export const Badge = ({
