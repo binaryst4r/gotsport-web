@@ -21,7 +21,6 @@
     "autoprefixer": "^10.4.7",
     "axios": "^0.27.2",
     "classnames": "^2.3.2",
-    "eslint": "^8.28.0",
     "formik": "^2.2.9",
     "postcss": "^8.4.14",
     "prettier": "^2.8.0",
@@ -45,7 +44,13 @@
     "compile:watch": "tsc --watch",
     "lint": "eslint ."
   },
-  
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest",
+      "airbnb"
+    ]
+  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -58,9 +63,8 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.44.0",
-    "@typescript-eslint/parser": "^5.44.0",
-    "eslint-plugin-react": "^7.31.11"
-  }
+  "devDependencies": {},
+  "repository": "https://github.com/binaryst4r/gotsport-web.git",
+  "author": "Larry Gust <larry.v.gust@gmail.com>",
+  "license": "MIT"
 }

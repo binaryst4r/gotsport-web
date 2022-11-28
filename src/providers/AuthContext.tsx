@@ -59,10 +59,6 @@ function AuthProvider(props: any) {
     }
   }, []);
 
-  if (isFetching) {
-    return <p>Loading...</p>;
-  }
-
   const login = async ({ email, password }: LoginProps) => {
     console.log(`loggin in user with ${email}`)
     const SignInArgs: RequestProps = {
@@ -130,7 +126,7 @@ function AuthProvider(props: any) {
 
   return (
     <AuthContext.Provider
-      value={{ user: currentUser, login, logout, register }}
+      value={{ user: currentUser, login, logout, register, isFetching }}
       {...props}
     />
   );

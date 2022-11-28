@@ -1,5 +1,5 @@
 import cn from 'classnames'
-import { HTMLAttributes, ImgHTMLAttributes } from 'react'
+import { ImgHTMLAttributes } from 'react'
 
 type Props = {
   className?: string
