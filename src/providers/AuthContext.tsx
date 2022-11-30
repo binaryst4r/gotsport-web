@@ -53,7 +53,6 @@ function AuthProvider(props: any) {
   React.useEffect(() => {
     if (userCookie && !currentUser) {
       // make api request and set user value john
-      console.log(userCookie);
       refetch().then((res) => {
         setCurrentUser(res.data?.data);
       });
@@ -69,7 +68,6 @@ function AuthProvider(props: any) {
   }
 
   const login = async ({ email, password }: LoginProps) => {
-    console.log(`loggin in user with ${email}`)
     const SignInArgs: RequestProps = {
       method: "POST",
       params: {
@@ -87,10 +85,7 @@ function AuthProvider(props: any) {
         const user = res.data.user
         const token = res.data.jwt
         const userData = {
-          id: user.id,
-          email: user.email,
-          first_name: user.first_name,
-          last_name: user.last_name,
+          ...user,
           jwt: token
         };
         setUser(userData);
@@ -113,15 +108,12 @@ function AuthProvider(props: any) {
     return makeApiRequest(RegisterArgs)
       .then((res) => {
         const user = res.data.data;
-        console.log(res, user)
         const userData = {
+          ...user,
           id: user.slug,
           authentication_token: res.headers["access-token"],
           client: res.headers["client"],
-          expiry: res.headers["expiry"],
-          email: user.email,
-          first_name: user.first_name,
-          last_name: user.last_name,
+          expiry: res.headers["expiry"]
         };
         setUser(userData);
         setCurrentUser(user);

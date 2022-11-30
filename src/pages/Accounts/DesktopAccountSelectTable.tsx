@@ -3,48 +3,11 @@ import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline"
 import { Disclosure } from "@headlessui/react"
 import { Badge } from "components/badges"
 import { DesktopAccountListItem } from "./AccountListItem"
-import { User } from "types/User"
-
-const guardianAccounts: User[] = [
-  {
-    id: 3455,
-    first_name: 'Ricky',
-    last_name: 'Williams',
-    email: 'rickywilliams@mail.com'
-  },
-  {
-    id: 3435,
-    first_name: 'Irene',
-    last_name: 'Williams',
-    email: 'irenewilliams@mail.com'
-  }
-]
-
-const primaryAccounts: User[] = [
-  {
-    id: 34522,
-    first_name: 'Jamie',
-    last_name: 'Williams',
-    email: 'jamiewilliams@mail.com'
-  }
-]
-
-const childAccounts: User[] = [
-  {
-    id: 345225,
-    first_name: 'Jesse',
-    last_name: 'Williams',
-    email: 'jessewilliams@mail.com'
-  },
-  {
-    id: 345512,
-    first_name: 'Alex',
-    last_name: 'Williams',
-    email: 'alexwilliams@mail.com'
-  }
-]
+import { useAuth } from "providers/AuthContext"
 
 export const DesktopAccountSelectTable = () => {
+  const {user} = useAuth()
+
   return (
     <div className="w-full">
       <div className="h-[4.5rem] bg-blue justify-between rounded-tl-md rounded-tr-md flex items-center px-8">
@@ -100,18 +63,16 @@ export const DesktopAccountSelectTable = () => {
                 </Badge>
               </Disclosure.Button>
               <Disclosure.Panel className="px-4 pt-4 pb-2 text-sm">
-                {guardianAccounts.map((account, i) => (
+                {user?.parents?.map((account, i) => (
                   <DesktopAccountListItem key={`guardian-${i}`} disabled={true} account={account} />
                 ))}
               </Disclosure.Panel>
             </>
           )}
         </Disclosure>
-        {primaryAccounts.map((account, i) => (
-          <DesktopAccountListItem key={`primary-${i}`} primary={true} account={account} />
-        ))}
+        <DesktopAccountListItem key={`primary-account`} primary={true} account={user} />
 
-        {childAccounts.map((account, i) => (
+        {user?.children?.map((account, i) => (
           <DesktopAccountListItem key={`child-${i}`} account={account} />
         ))}
       </div>

@@ -13,14 +13,9 @@ import AlertBanner from "components/alerts/AlertBanner";
 import { useAlertBanner } from "providers/alerts/AlertBannerProvider";
 
 export const AccountSelect = () => {
-  // const {user} = useAuth()
+  const {user} = useAuth()
   const { dispatch } = useAlertBanner();
-  const user = {
-    id: 42669,
-    first_name: "Jamie",
-    last_name: "Williams",
-    email: "jamiewilliams@mail.com",
-  };
+  if (!user) { return null }
   return (
     <div className="min-h-screen w-full bg-dark-blue pb-20">
       <div className="absolute w-full top-16">

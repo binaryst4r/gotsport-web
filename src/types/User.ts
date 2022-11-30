@@ -3,6 +3,8 @@ export interface User {
   first_name: string
   last_name: string
   email: string
+  children: User[]
+  parents: User[]
   // address1: String
   // address2: String
   // allergies: String

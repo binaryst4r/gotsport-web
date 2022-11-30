@@ -9,6 +9,7 @@ export const App = () => {
   const { user } = useAuth();
 
   if (user) {
+    console.log(user)
     return (
       <>
         <Navbar />

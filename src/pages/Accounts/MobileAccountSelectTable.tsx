@@ -3,47 +3,11 @@ import { Badge } from "components/badges"
 import { EyeIcon, UsersIcon, EyeSlashIcon } from "@heroicons/react/24/solid"
 import { MobileAccountListItem } from "./AccountListItem"
 import { User } from "types/User"
-
-const guardianAccounts: User[] = [
-  {
-    id: 3455123,
-    first_name: 'Ricky',
-    last_name: 'Williams',
-    email: 'rickywilliams@mail.com'
-  },
-  {
-    id: 345523,
-    first_name: 'Irene',
-    last_name: 'Williams',
-    email: 'irenewilliams@mail.com'
-  }
-]
-
-const primaryAccounts: User[] = [
-  {
-    id: 34123,
-    first_name: 'Jamie',
-    last_name: 'Williams',
-    email: 'jamiewilliams@mail.com'
-  }
-]
-
-const childAccounts: User[] = [
-  {
-    id: 34155123,
-    first_name: 'Jesse',
-    last_name: 'Williams',
-    email: 'jessewilliams@mail.com'
-  },
-  {
-    id: 343355123,
-    first_name: 'Alex',
-    last_name: 'Williams',
-    email: 'alexwilliams@mail.com'
-  }
-]
+import { useAuth } from "providers/AuthContext"
 
 export const MobileAccountSelectTable = () => {
+  const {user} = useAuth()
+  console.log(user)
   return (
     <div className="bg-mono-white rounded py-3">
           <Disclosure>
@@ -60,7 +24,7 @@ export const MobileAccountSelectTable = () => {
                   </Badge>
                 </Disclosure.Button>
                 <Disclosure.Panel className="px-4 pt-4 pb-2 text-sm">
-                  {guardianAccounts.map((account, i) => (
+                  {user?.parents?.map((account, i) => (
                     <MobileAccountListItem key={`guardian-${i}`} account={account} />
                   ))}
                 </Disclosure.Panel>
@@ -78,9 +42,7 @@ export const MobileAccountSelectTable = () => {
                   </Badge>
                 </Disclosure.Button>
                 <Disclosure.Panel className="px-4 pt-4 pb-2 text-sm text-gray-500">
-                  {primaryAccounts.map((account, i) => (
-                    <MobileAccountListItem key={`primary-${i}`} primary={true} account={account} />
-                  ))}
+                  <MobileAccountListItem key={`primary-account}`} primary={true} account={user} />
                 </Disclosure.Panel>
               </>
             )}
@@ -96,7 +58,7 @@ export const MobileAccountSelectTable = () => {
                   </Badge>
                 </Disclosure.Button>
                 <Disclosure.Panel className="px-4 pt-4 pb-2 text-sm text-gray-500">
-                  {childAccounts.map((account, i) => (
+                  {user?.children?.map((account, i) => (
                     <MobileAccountListItem key={`child-${i}`} account={account} />
                   ))}
                 </Disclosure.Panel>

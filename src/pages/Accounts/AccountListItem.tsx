@@ -17,16 +17,17 @@ export const MobileAccountListItem = ({
   primary = false,
   disabled = false,
 }: {
-  account: User;
+  account: User | null;
   primary?: boolean;
   disabled?: boolean;
 }) => {
+  if (!account) { return null }
   return (
     <div className="flex px-4 py-3 justify-between border-b border-1 border-mono-300">
       <div className="flex items-start">
         <Avatar
           className={primary ? "border-[3px] border-green" : ""}
-          size={10}
+          size={12}
           src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
         />
         <div className="pl-2">
@@ -68,27 +69,12 @@ export const MobileAccountListItem = ({
   );
 };
 
-type BadgeStyle = {
-  Child: {
-    variant: string;
-    icon: null;
-  };
-  Primary: {
-    variant: string;
-    icon: JSX.Element;
-  };
-  Guardian: {
-    variant: string;
-    icon: JSX.Element;
-  };
-};
-
 export const DesktopAccountListItem = ({
   account,
   primary = false,
   disabled = false,
 }: {
-  account: User;
+  account: User | null;
   primary?: boolean;
   disabled?: boolean;
 }) => {
@@ -100,7 +86,9 @@ export const DesktopAccountListItem = ({
   }
 
   const badgeMap = {
-    Child: <Badge variant="secondary">Child</Badge>,
+    Child: (
+      <Badge variant="secondary">Child</Badge>
+    ),
     Primary: (
       <Badge variant="primary">
         <UsersIcon className="h-4" /> <span className="ml-2">Primary</span>
@@ -112,7 +100,7 @@ export const DesktopAccountListItem = ({
       </Badge>
     ),
   } as { [key: string]: any }; //need this last bit in order to use string as an index on line 87
-
+  if (!account) {return null}
   return (
     <div className="flex px-8 py-3 justify-between border-b border-1 border-mono-300">
       <div className="w-1/6">{badgeMap[accountType]}</div>
