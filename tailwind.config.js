@@ -29,7 +29,7 @@ module.exports = {
         white: '#ffffff',
         100: '#fafafa',
         200: '#f7f7f7',
-        300: '#efefee',
+        300: '#EDEEF2',
         400: '#d0d0ce',
         500: '#b1b2b3',
         600: '#717171',

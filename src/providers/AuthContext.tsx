@@ -54,7 +54,7 @@ function AuthProvider(props: any) {
     if (userCookie && !currentUser) {
       // make api request and set user value john
       refetch().then((res) => {
-        setCurrentUser(res.data?.data);
+        setCurrentUser(res.data?.data.user);
       });
     }
   }, []);

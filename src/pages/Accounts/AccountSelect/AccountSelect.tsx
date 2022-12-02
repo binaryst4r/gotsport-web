@@ -1,15 +1,13 @@
 import {
   CogIcon,
 } from "@heroicons/react/24/outline";
-import { DashboardNav } from "components/nav/DashboardNav";
+import { DashboardNav } from "pages/Accounts/DashboardNav";
 import { Heading } from "components/typography/Heading";
 import { Toggler } from "components/forms";
 import { Container } from "components/layout";
 import { MobileAccountSelectTable } from "./MobileAccountSelectTable";
-import { DashboardHeader } from "./DashboardHeader";
 import { useAuth } from "providers/AuthContext";
 import { DesktopAccountSelectTable } from "./DesktopAccountSelectTable";
-import AlertBanner from "components/alerts/AlertBanner";
 import { useAlertBanner } from "providers/alerts/AlertBannerProvider";
 
 export const AccountSelect = () => {
@@ -17,12 +15,7 @@ export const AccountSelect = () => {
   const { dispatch } = useAlertBanner();
   if (!user) { return null }
   return (
-    <div className="min-h-screen w-full bg-dark-blue pb-20">
-      <div className="absolute w-full top-16">
-        <AlertBanner />
-      </div>
-      <DashboardHeader user={user} />
-      <DashboardNav />
+    <>
       <Container>
         <div className="flex text-mono-white justify-between px-12 py-6 sm:py-16">
           <CogIcon
@@ -45,6 +38,6 @@ export const AccountSelect = () => {
           <DesktopAccountSelectTable />
         </div>
       </Container>
-    </div>
+    </>
   );
 };

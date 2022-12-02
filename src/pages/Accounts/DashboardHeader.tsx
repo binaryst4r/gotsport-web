@@ -6,6 +6,7 @@ import { Heading } from "components/typography/Heading";
 import { User } from "types/User";
 
 export const DashboardHeader = ({ user }: { user: User }) => {
+  console.log(user, user.first_name)
   return (
     <div className="hidden sm:block bg-mono-white">
       <Container>

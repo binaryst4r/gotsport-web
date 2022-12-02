@@ -1,9 +1,9 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { Login } from "pages/Auth";
 import { useAuth } from "providers/AuthContext";
 import { Design } from "pages/Design";
 import { Navbar } from "components/nav/Navbar";
-import { AccountSelect } from "pages/Accounts/AccountSelect";
+import { Accounts } from "pages/Accounts";
 
 export const App = () => {
   const { user } = useAuth();
@@ -14,10 +14,8 @@ export const App = () => {
       <>
         <Navbar />
         <Routes>
-          <Route element={<AccountSelect />} path="/" />
-          <Route element={<AccountSelect />} path="/account-select" />
+          <Route element={<Accounts />} path="/account/*" />
           <Route element={null} path="/dashboard" />
-          <Route element={null} path="/account" />
           <Route element={null} path="/events" />
           <Route element={null} path="/reporting" />
           <Route element={null} path="/team-mgmt" />
@@ -26,6 +24,7 @@ export const App = () => {
           <Route element={null} path="/forms" />
           <Route element={null} path="/referee" />
           <Route element={null} path="/family" />
+          
         </Routes>
       </>
     );
