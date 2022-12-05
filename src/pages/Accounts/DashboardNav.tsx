@@ -24,14 +24,14 @@ export const DashboardNav = () => {
           <Link className="block h-full w-1/2 sm:w-[10rem]" to="account-select">
             <NavItem active={location.pathname === '/account/account-select'}>
               <UsersIcon className="h-8 pr-2" />
-              <span>Accounts</span>
+              <span className="text-base sm:text-lg">Accounts</span>
             </NavItem>
           </Link>
 
           <Link className="block h-full w-1/2 sm:w-[10rem]" to="billing">
             <NavItem active={location.pathname.includes('/account/billing')}>
               <CurrencyDollarIcon className="h-8 pr-2" />
-              <span>Billing</span>
+              <span className="text-base sm:text-lg">Billing</span>
             </NavItem>
           </Link>
         </div>

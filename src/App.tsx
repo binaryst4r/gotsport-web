@@ -24,7 +24,10 @@ export const App = () => {
           <Route element={null} path="/forms" />
           <Route element={null} path="/referee" />
           <Route element={null} path="/family" />
-          
+          <Route
+            path="*"
+            element={<Navigate to="/account/account-select" replace />}
+          />
         </Routes>
       </>
     );
