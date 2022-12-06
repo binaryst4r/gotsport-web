@@ -22,6 +22,7 @@ module.exports = {
       salmon: '#DB6B6B',
       gold: '#D5BA10',
       yellow: '#F5DC3D',
+      "light-yellow": '#F7EEB4',
       "blue-gray": '#D9E1E7',
       "dark-blue-gray": '#99B2C6',
       mono: {
@@ -57,9 +58,13 @@ module.exports = {
           text: '#8B8B8B',
           bg: '#E0E0E0'
         },
+        warning: {
+          text: '#D5BA10',
+          bg: '#F7EEB4'
+        },
         danger: {
           text: '#ffffff',
-          bg: '#C4000'
+          bg: '#C40000'
         }
       },
       alert: {

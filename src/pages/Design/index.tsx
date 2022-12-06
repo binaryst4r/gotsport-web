@@ -36,13 +36,15 @@ export const Design = () => {
     <div className="flex">
       <div className="flex min-h-screen flex-col bg-mono-700 w-1/4">
         <div className="flex flex-1 flex-col overflow-y-auto pt-5 pb-4">
-          <div className="flex flex-shrink-0 items-center px-4">
-            <img
-              className="h-8 w-auto"
-              src={logo}
-              alt="GotSport"
-            />
-            <span className="text-light-green block pl-4">Design</span>
+          <div>
+            <Link className="flex flex-shrink-0 items-center px-4" to="/">
+              <img
+                className="h-8 w-auto"
+                src={logo}
+                alt="GotSport"
+              />
+              <span className="text-light-green block pl-4">Design</span>
+            </Link>
           </div>
           <nav className="mt-5 flex-1 space-y-1 bg-mono-700 px-2" aria-label="Sidebar">
             <Link
@@ -231,6 +233,10 @@ const Badges = () => {
 
         <li className="py-4">
           <Badge variant="gray">Gray</Badge>
+        </li>
+
+        <li className="py-4">
+          <Badge variant="warning">Warning</Badge>
         </li>
 
         <li className="py-4">

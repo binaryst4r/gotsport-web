@@ -1,18 +1,24 @@
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { Bars3Icon, BellIcon, XMarkIcon, InboxIcon } from '@heroicons/react/24/outline'
+import {
+  Bars3Icon,
+  BellIcon,
+  XMarkIcon,
+  InboxIcon,
+} from '@heroicons/react/24/outline'
 import { Avatar } from 'components/avatars'
 import { MessageDropdown } from './MessageDropdown'
 import { NotificationDropdown } from './NotificationDropdown'
-import logo from "../../images/gotsport-lt.png";
-import {useAuth} from 'providers/AuthContext'
+import logo from '../../images/gotsport-lt.png'
+import { useAuth } from 'providers/AuthContext'
+import { Button } from 'components/buttons'
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
 
 export const Navbar = () => {
-  const {logout} = useAuth()
+  const { logout } = useAuth()
   return (
     <Disclosure as="nav" className="bg-dark-blue">
       {({ open }) => (
@@ -21,7 +27,6 @@ export const Navbar = () => {
             <div className="flex h-16 items-center justify-between">
               <div className="flex items-center">
                 <div className="flex-shrink-0">
-
                   <Avatar
                     className="block sm:hidden border-green border-2 w-[3rem] h-[3rem]"
                     src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
@@ -37,8 +42,8 @@ export const Navbar = () => {
               </div>
               <div className="hidden sm:ml-6 sm:block">
                 <div className="flex items-center">
-									<MessageDropdown />
-									<NotificationDropdown />
+                  {/* <MessageDropdown /> */}
+                  <NotificationDropdown />
                   {/* Profile dropdown */}
                   <Menu as="div" className="relative ml-3">
                     <div>
@@ -60,7 +65,7 @@ export const Navbar = () => {
                       leaveFrom="transform opacity-100 scale-100"
                       leaveTo="transform opacity-0 scale-95"
                     >
-                      <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                      <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-mono-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                         <Menu.Item>
                           {({ active }) => (
                             <a
@@ -76,28 +81,9 @@ export const Navbar = () => {
                         </Menu.Item>
                         <Menu.Item>
                           {({ active }) => (
-                            <a
-                              href="#"
-                              className={classNames(
-                                active ? 'bg-gray-100' : '',
-                                'block px-4 py-2 text-sm text-gray-700'
-                              )}
-                            >
-                              Settings
-                            </a>
-                          )}
-                        </Menu.Item>
-                        <Menu.Item>
-                          {({ active }) => (
-                            <a
-                              href="#"
-                              className={classNames(
-                                active ? 'bg-gray-100' : '',
-                                'block px-4 py-2 text-sm text-gray-700'
-                              )}
-                            >
-                              Sign out
-                            </a>
+                            <Button className='block px-4 py-2 text-sm' variant='link'>
+                              Sign Out
+                            </Button>
                           )}
                         </Menu.Item>
                       </Menu.Items>
@@ -107,12 +93,12 @@ export const Navbar = () => {
               </div>
               <div className="-mr-2 flex sm:hidden">
                 {/* mobile icons */}
-                <span className='inline flex items-center text-mono-white'>
-									<MessageDropdown />
-									<NotificationDropdown />
+                <span className="inline flex items-center text-mono-white">
+                  {/* <MessageDropdown /> */}
+                  <NotificationDropdown />
                 </span>
                 {/* Mobile menu button */}
-                <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-mono-white hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-mono-white hover:bg-mono-700 hover:text-mono-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-mono-white">
                   <span className="sr-only">Open main menu</span>
                   {open ? (
                     <XMarkIcon className="block h-6 w-6" aria-hidden="true" />

@@ -4,7 +4,7 @@ import { User } from "types/User"
 
 const TableRow = ({user, type}: {user: User, type: 'Primary' | 'Child'}) => {
   return (
-    <div className="flex">
+    <div className="flex py-6 border-b border-mono-300">
       <div className="flex items-center w-1/4">
         <Avatar size={8} />
         <div className="pl-2">
