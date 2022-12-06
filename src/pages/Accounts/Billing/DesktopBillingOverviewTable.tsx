@@ -75,8 +75,8 @@ export const DesktopBillingOverviewTable = ({user}: {user: User | null}) => {
         </div>
 
         <TableRow user={user} type="Primary" />
-        {user.children.map(child => (
-          <TableRow user={child} type="Child" />
+        {user.children.map((child, i) => (
+          <TableRow key={i} user={child} type="Child" />
         ))}
       </div>
     </div>

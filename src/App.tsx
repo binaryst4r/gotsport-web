@@ -38,6 +38,10 @@ export const App = () => {
       <Route path="/" element={<Login />} />
       <Route path="/design/*" element={<Design />} />
       <Route path="/auth" element={<Login />} />
+      <Route
+        path="*"
+        element={<Navigate to="/" replace />}
+      />
     </Routes>
   );
 };

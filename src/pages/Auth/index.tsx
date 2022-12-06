@@ -40,13 +40,13 @@ export const Login = () => {
             <div className="rounded-md shadow-sm -space-y-px">
               <Field name="email">
                 {({ field, form, meta }: { field: any; form: any; meta: any}) => (
-                  <TextInput {...field} type="email" />
+                  <TextInput placeholder="Email address" {...field} type="email" />
                 )}
               </Field>
 
               <Field name="password">
                 {({ field, form, meta }: { field: any; form: any; meta: any}) => (
-                  <TextInput {...field} type="password" />
+                  <TextInput placeholder="Password" {...field} type="password" />
                 )}
               </Field>
             </div>

@@ -1,8 +1,12 @@
 import {Cookies} from 'react-cookie'
-import { User } from 'types/User'
 const cookies = new Cookies()
 
-export const setUser = (payload: User) => {
+type UserCookie = {
+  id: string
+  jwt: string
+}
+
+export const setUser = (payload: UserCookie) => {
   if (!process.env.REACT_APP_USER_COOKIE){ return null }
 	return cookies.set(process.env.REACT_APP_USER_COOKIE, payload, {path: '/'});
 }

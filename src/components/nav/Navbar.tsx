@@ -81,7 +81,7 @@ export const Navbar = () => {
                         </Menu.Item>
                         <Menu.Item>
                           {({ active }) => (
-                            <Button className='block px-4 py-2 text-sm' variant='link'>
+                            <Button onClick={logout} className='block px-4 py-2 text-sm' variant='link'>
                               Sign Out
                             </Button>
                           )}

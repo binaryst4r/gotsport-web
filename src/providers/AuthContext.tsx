@@ -85,7 +85,7 @@ function AuthProvider(props: any) {
         const user = res.data.user
         const token = res.data.jwt
         const userData = {
-          ...user,
+          id: user.id,
           jwt: token
         };
         setUser(userData);
@@ -109,11 +109,8 @@ function AuthProvider(props: any) {
       .then((res) => {
         const user = res.data.data;
         const userData = {
-          ...user,
-          id: user.slug,
-          authentication_token: res.headers["access-token"],
-          client: res.headers["client"],
-          expiry: res.headers["expiry"]
+          id: user.id,
+          jwt: res.headers["access-token"]
         };
         setUser(userData);
         setCurrentUser(user);
