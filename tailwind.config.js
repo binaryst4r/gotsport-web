@@ -4,6 +4,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        'account-bg': "url(images/account-bg.jpg)"
+      },
       fontFamily: {
         proxima: [ 'proxima-nova', 'sans-serif']
       }
@@ -57,6 +60,10 @@ module.exports = {
         muted: {
           text: '#8B8B8B',
           bg: '#E0E0E0'
+        },
+        success: {
+          text: '#70AF5F',
+          bg: '#DBF4D4'
         },
         warning: {
           text: '#D5BA10',

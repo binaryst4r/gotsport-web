@@ -2,16 +2,15 @@ import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import {
   Bars3Icon,
-  BellIcon,
   XMarkIcon,
-  InboxIcon,
 } from '@heroicons/react/24/outline'
 import { Avatar } from 'components/avatars'
-import { MessageDropdown } from './MessageDropdown'
+// import { MessageDropdown } from './MessageDropdown'
 import { NotificationDropdown } from './NotificationDropdown'
-import logo from '../../images/gotsport-lt.png'
+import logo from 'images/gotsport-lt.png'
 import { useAuth } from 'providers/AuthContext'
 import { Button } from 'components/buttons'
+import {useNavigate} from 'react-router-dom'
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
@@ -19,6 +18,12 @@ function classNames(...classes: string[]) {
 
 export const Navbar = () => {
   const { logout } = useAuth()
+  const navigate = useNavigate()
+  const handleLogout = () => {
+    logout().then(()=> {
+      navigate('/')
+    })
+  }
   return (
     <Disclosure as="nav" className="bg-dark-blue">
       {({ open }) => (
@@ -81,7 +86,7 @@ export const Navbar = () => {
                         </Menu.Item>
                         <Menu.Item>
                           {({ active }) => (
-                            <Button onClick={logout} className='block px-4 py-2 text-sm' variant='link'>
+                            <Button onClick={handleLogout} className='block px-4 py-2 text-sm' variant='link'>
                               Sign Out
                             </Button>
                           )}
@@ -129,7 +134,7 @@ export const Navbar = () => {
                 </Disclosure.Button>
                 <Disclosure.Button
                   as="button"
-                  onClick={logout}
+                  onClick={handleLogout}
                   className="block rounded-md px-3 py-2 text-base font-medium hover:bg-mono-300 hover:text-mono-600"
                 >
                   Sign out

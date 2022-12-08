@@ -236,6 +236,10 @@ const Badges = () => {
         </li>
 
         <li className="py-4">
+          <Badge variant="success">Success</Badge>
+        </li>
+
+        <li className="py-4">
           <Badge variant="warning">Warning</Badge>
         </li>
 

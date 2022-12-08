@@ -27,27 +27,29 @@ export const SelectInput = ({
   options,
   onSelect,
   label,
-  initialValue
+  initialValue,
+  placeholder
 }: {
   options: InputOption[];
   onSelect: (selected?: InputOption) => void;
   label?: string
   initialValue: InputOption | null
+  placeholder?: string
 }) => {
   const [currentSelection, setCurrentSelection] = React.useState<InputOption>(initialValue || {
     name: "",
-    display: "Select...",
+    display: placeholder || "Select...",
     value: null
   });
   useEffect(() => {
     if (currentSelection && currentSelection.value) {
       onSelect(currentSelection)
     }
-  }, [currentSelection])
+  }, [currentSelection, onSelect])
   const optionsWithNull: InputOption[] = [
     {
       name: "",
-      display: "Select...",
+      display: placeholder || "Select...",
       value: null
     },
     ...options
@@ -60,12 +62,12 @@ export const SelectInput = ({
         {({ open }) => (
           <>
           {label ? (
-            <Listbox.Label className="block text-sm font-medium text-gray-700">
+            <Listbox.Label className="mb-1 block text-sm font-medium text-mono-700">
               {label}
             </Listbox.Label>
           ) : null}
-            <div className="mt-1 relative">
-              <Listbox.Button className="bg-mono-white relative w-full border border-mono-500 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-lime-500 focus:border-lime-500 sm:text-lg">
+            <div className="relative">
+              <Listbox.Button className="bg-mono-white relative w-full border border-mono-500 rounded-lg shadow-sm pl-3 pr-10 h-12 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-lime-500 focus:border-lime-500 sm:text-lg">
                 <span className="block truncate">{currentSelection?.display}</span>
                 <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
                   <ChevronUpDownIcon
@@ -82,7 +84,7 @@ export const SelectInput = ({
                 leaveFrom="opacity-100"
                 leaveTo="opacity-0"
               >
-                <Listbox.Options className="absolute z-10 mt-1 w-full bg-mono-white shadow-lg max-h-60 rounded-md py-1 text-lg ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-lg">
+                <Listbox.Options className="absolute z-10 mt-1 w-full bg-mono-white shadow-lg max-h-60 rounded-lg py-1 text-lg ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-lg">
                   {optionsWithNull.map((option) => (
                     <Listbox.Option
                       key={option.name}
@@ -189,7 +191,7 @@ export const TextArea = ({ name, label, ...rest }: TextAreaProps) => {
       <div className="mt-1">
         <textarea
           id={name}
-          className="shadow-sm focus:ring-lime-500 focus:border-lime-500 block w-full sm:text-sm border-mono-500 rounded-md"
+          className="shadow-sm focus:ring-lime-500 focus:border-lime-500 block w-full sm:text-sm border-mono-500 rounded-lg"
           {...rest}
         />
       </div>
@@ -197,7 +199,7 @@ export const TextArea = ({ name, label, ...rest }: TextAreaProps) => {
   );
 };
 
-export const TextInput = ({ name, label, ...rest }: Props) => {
+export const TextInput = ({ name, label, className, ...rest }: Props) => {
   return (
     <div className="my-6">
       <div>
@@ -207,7 +209,7 @@ export const TextInput = ({ name, label, ...rest }: Props) => {
         <input
           name={name}
           id={name}
-          className="py-3 block w-full rounded-md border-mono-500 shadow-sm sm:text-sm"
+          className={`h-12 block w-full rounded-lg border-mono-500 shadow-sm sm:text-sm ${className}`}
           {...rest}
         />
       </div>

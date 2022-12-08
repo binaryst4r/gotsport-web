@@ -80,8 +80,8 @@ export const MobileBillingOverviewTable = ({user}: {user: User | null}) => {
       </div>
       <div className="bg-mono-white p-4">
         <TableRow user={user} type="Primary" />
-        {user.children.map(childAccount => (
-          <TableRow user={childAccount} type="Child" />
+        {user.children.map((childAccount, i) => (
+          <TableRow key={i} user={childAccount} type="Child" />
         ))}
       </div>
     </div>

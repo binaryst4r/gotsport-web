@@ -9,21 +9,12 @@ export const App = () => {
   const { user } = useAuth();
 
   if (user) {
-    console.log(user)
     return (
       <>
         <Navbar />
         <Routes>
           <Route element={<Accounts />} path="/account/*" />
-          <Route element={null} path="/dashboard" />
-          <Route element={null} path="/events" />
-          <Route element={null} path="/reporting" />
-          <Route element={null} path="/team-mgmt" />
-          <Route element={null} path="/team-scheduling" />
-          <Route element={null} path="/program-registrations" />
-          <Route element={null} path="/forms" />
-          <Route element={null} path="/referee" />
-          <Route element={null} path="/family" />
+          <Route path="/design/*" element={<Design />} />
           <Route
             path="*"
             element={<Navigate to="/account/account-select" replace />}
@@ -40,7 +31,7 @@ export const App = () => {
       <Route path="/auth" element={<Login />} />
       <Route
         path="*"
-        element={<Navigate to="/" replace />}
+        element={null} // replace with a NoMatch page
       />
     </Routes>
   );

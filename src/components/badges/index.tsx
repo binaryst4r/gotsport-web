@@ -5,6 +5,7 @@ const BadgeVariantStyles = {
   primary: 'bg-badge-primary-bg text-badge-primary-text inline-flex items-center rounded-md',
   secondary: 'bg-badge-secondary-bg text-badge-secondary-text inline-flex items-center rounded-md',
   muted: 'bg-badge-muted-bg text-badge-muted-text inline-flex items-center rounded-md',
+  success: 'bg-badge-success-bg  text-badge-success-text inline-flex items-center rounded-md',
   warning: 'bg-badge-warning-bg  text-badge-warning-text inline-flex items-center rounded-md',
   danger: 'bg-badge-danger-bg  text-badge-danger-text inline-flex items-center rounded-md',
   gray: 'bg-badge-gray-bg text-badge-gray-text inline-flex items-center rounded-md'

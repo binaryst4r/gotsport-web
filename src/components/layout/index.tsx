@@ -13,9 +13,9 @@ type ModalProps = {
   onRequestClose?: () => void
 } & React.HTMLAttributes<HTMLDivElement>
 
-export const Container = ({children, ...rest}: Props) => {
+export const Container = ({children, className, ...rest}: Props) => {
   return (
-    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-full" {...rest}>
+    <div className={`mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-full ${className}`} {...rest}>
       <div className="mx-auto max-w-full h-full">
         {children}
       </div>

@@ -18,14 +18,14 @@ type RegisterProps = {
 interface AuthContextType {
   user: User | null;
   login: ({ email, password }: LoginProps) => void;
-  logout: () => void;
+  logout: () => Promise<any>;
   register: ({ email, password}: RegisterProps) => void;
 }
 
 const AuthContext = React.createContext<AuthContextType>({
   user: null,
   login: () => null,
-  logout: () => null,
+  logout: async () => null,
   register: () => null,
 });
 
@@ -120,6 +120,7 @@ function AuthProvider(props: any) {
   const logout = () => {
     clearUser();
     setCurrentUser(null);
+    return Promise.resolve(true)
   }; // clear the token in localStorage and the user data
 
   return (
